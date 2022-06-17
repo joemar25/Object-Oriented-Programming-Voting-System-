@@ -1,0 +1,35 @@
+Using Object-oriented programming approach, create a program that can do the following tasks:
+
+FILING OF CANDIDACY:
+Data needed:
+- Full name
+- Political Party
+- Educational background
+- Position to Run (President, VP, Senator)
+- Does the candidate has existing criminal records? If yes, input the criminal case.
+
+VALIDATION OF CANDIDATES:
+Display the data of qualified and disqualified list candidates. 
+For disqualified candidates, display the reason(s) of disqualification.
+Group them by their selected position to run.
+
+Qualifications:
+Only candidates with NO criminal records and Master Degree holder can run for the position of Senator.
+Only candidates with NO criminal records and Doctorate Degree holder can run for the position of President and Vice-president.
+Minimum number of qualified candidates for senator is 12.
+
+VOTING:
+        The program must ask the following data from the voter:
+        - Full name
+        - Age
+
+After validating the candidates, display the names and data of QUALIFIED candidates and the user must proceed to voting.
+Minimum number of voters will be 25.
+
+       - The slot for candidacy for president is 10, 15 for vice president and 30 for senators.
+       - Only 18 years old and above can vote.
+       - The voter can only vote ONE President, ONE Vice-president and 12 Senators (Maximum). 
+       - The voter can decide to cast 0 vote to any position.
+
+After voting, display the final tally of votes.
+Display the respective winners on each position.
