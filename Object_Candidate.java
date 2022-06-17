@@ -3,9 +3,8 @@ public class Object_Candidate {
     private String firstName, lastName, initial, suffix, politicalParty, educationalBackground, chosenPosition,
             crimeRecord;
 
-    public Object_Candidate(final String firstName, final String lastName, final String initial, final String suffix,
-            final String politicalParty,
-            final String educationalBackground, final String chosenPosition, final String crimeRecord) {
+    public Object_Candidate(String firstName, String lastName, String initial, String suffix, String politicalParty,
+            String educationalBackground, String chosenPosition, String crimeRecord) {
         this.setFirstName(firstName);
         this.setLastName(lastName);
         this.setInitial(initial);
@@ -20,7 +19,7 @@ public class Object_Candidate {
         return firstName;
     }
 
-    private void setFirstName(final String firstName) {
+    private void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
@@ -28,7 +27,7 @@ public class Object_Candidate {
         return lastName;
     }
 
-    private void setLastName(final String lastName) {
+    private void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
@@ -36,7 +35,7 @@ public class Object_Candidate {
         return initial;
     }
 
-    private void setInitial(final String initial) {
+    private void setInitial(String initial) {
         this.initial = initial;
     }
 
@@ -44,7 +43,7 @@ public class Object_Candidate {
         return suffix;
     }
 
-    private void setSuffix(final String suffix) {
+    private void setSuffix(String suffix) {
         this.suffix = suffix;
     }
 
@@ -52,7 +51,7 @@ public class Object_Candidate {
         return politicalParty;
     }
 
-    private void setPoliticalParty(final String politicalParty) {
+    private void setPoliticalParty(String politicalParty) {
         this.politicalParty = politicalParty;
     }
 
@@ -60,7 +59,7 @@ public class Object_Candidate {
         return educationalBackground;
     }
 
-    private void setEducationalBackground(final String educationalBackground) {
+    private void setEducationalBackground(String educationalBackground) {
         this.educationalBackground = educationalBackground;
     }
 
@@ -68,7 +67,7 @@ public class Object_Candidate {
         return chosenPosition;
     }
 
-    private void setChosenPosition(final String chosenPosition) {
+    private void setChosenPosition(String chosenPosition) {
         this.chosenPosition = chosenPosition;
     }
 
@@ -76,7 +75,7 @@ public class Object_Candidate {
         return crimeRecord;
     }
 
-    private void setCrimeRecord(final String crimeRecord) {
+    private void setCrimeRecord(String crimeRecord) {
         this.crimeRecord = crimeRecord;
     }
 
