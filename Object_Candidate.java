@@ -81,7 +81,7 @@ public class Object_Candidate {
 
     @Override
     public String toString() {
-        return "Test";
+        return String.format("%s", this.getFirstName());
     }
 
 }

@@ -1,10 +1,12 @@
+import java.util.ArrayList;
+
 public class Main {
 
     public static void main(String[] args) {
 
-        Object_Candidate f = new Object_Candidate("Shaira", "Cardiño", "J.", "", "", "", "", "");
+        ArrayList<Object_Candidate> candidate = new ArrayList<>();
+        candidate.add(new Object_Candidate("Shaira", "Cardiño", "J.", "", "", "", "", ""));
+        System.out.println(candidate.get(0));
 
-        System.out.println(f.getFirstName());
-        // obj.add(new Object_Candidate("Joemar", "Cardiño", "J.", "", "", "", "", ""));
     }
 }
