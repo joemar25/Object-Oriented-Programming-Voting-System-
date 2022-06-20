@@ -81,7 +81,11 @@ public class Object_Candidate {
 
     @Override
     public String toString() {
-        return String.format("%s", this.getFirstName());
+        return String.format(
+                "Full Name: %s, %s %s %s\nPolitical Party: %s\nEducational Background: %s\nRunning for: %s\nCriminal Record: %s",
+                this.getLastName(), this.getFirstName(), this.getInitial(),
+                this.getSuffix(), this.getPoliticalParty(), this.getEducationalBackground(), this.getChosenPosition(),
+                this.getCrimeRecord());
     }
 
 }
