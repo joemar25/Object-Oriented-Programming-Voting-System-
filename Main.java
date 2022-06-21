@@ -11,7 +11,8 @@ public class Main {
         ArrayList<Object_Voter> voter = new ArrayList<>();
         Scanner sc, in = new Scanner(System.in);
 
-        String firstName, lastName, initial, suffix, votedPres, votedVp, votedSenate[] = new String[12];
+        String firstName, lastName, initial = "", suffix = "", politicalParty, educationalBackground, chosenPosition,
+                crimeRecord, votedPres, votedVp, votedSenate[] = new String[12];
         int input, age;
 
         while (true) {
@@ -28,19 +29,19 @@ public class Main {
             input = in.nextInt();
 
             if (input == 1) {
-                sc = new Scanner(candidateFile);
-                if (!sc.hasNextLine()) {
+                if (candidate.size() == 0) {
                     System.out.println("Note: No data loaded.");
                 } else {
-                    System.out.println("\nAll Candidate from File");
-                    while (sc.hasNextLine())
-                        System.out.println(sc.nextLine());
+                    System.out.println("\nAll Candidate");
+                    for (Object_Candidate data : candidate) {
+                        System.out.println(data + "\n");
+                    }
                 }
             }
 
             if (input == 2) {
                 if (candidate.size() == 0) {
-                    System.out.println("No Candidate to Vote, Please load or Fill candidacy.");
+                    System.out.println("No Candidate to Vote, Please load or Fill a candidacy form.");
                 } else {
                     System.out.println("\nVote Candidates");
 
@@ -90,11 +91,44 @@ public class Main {
             }
 
             if (input == 6) {
-                System.out.println("\nNote: The Data is now Loaded, Ready for Voting.");
+                File file = new File("files/candidate.txt");
+                sc = new Scanner(file);
+                while (sc.hasNextLine()) {
+                    sc.findInLine(": ");
+                    firstName = sc.nextLine();
+
+                    sc.findInLine(": ");
+                    lastName = sc.nextLine();
+
+                    sc.findInLine(": ");
+                    initial = sc.nextLine();
+
+                    sc.findInLine(": ");
+                    suffix = sc.nextLine();
+                    if (suffix.equalsIgnoreCase("Suffix:"))
+                        suffix = "";
+
+                    sc.findInLine(": ");
+                    politicalParty = sc.nextLine();
+
+                    sc.findInLine(": ");
+                    educationalBackground = sc.nextLine();
+
+                    sc.findInLine(": ");
+                    chosenPosition = sc.nextLine();
+
+                    sc.findInLine(": ");
+                    crimeRecord = sc.nextLine();
+                    sc.nextLine();
+
+                    candidate.add(new Object_Candidate(firstName, lastName, initial, suffix, politicalParty,
+                            educationalBackground, chosenPosition, crimeRecord));
+                }
+                System.out.println("Note: The Data is now Loaded, Ready for Voting.");
             }
 
             if (input == 7) {
-                System.out.println("\nNote: Data is now Clear.");
+                System.out.println("Note: Data is now Clear.");
             }
 
             if (input == 8) {
