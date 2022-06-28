@@ -6,22 +6,12 @@ import java.io.File;
 
 public class Main2 {
 
-    private ArrayList<Object_Candidate> candidates = new ArrayList<>();
-    private ArrayList<Object_Candidate> presList = new ArrayList<>();
-    private ArrayList<Object_Candidate> vpList = new ArrayList<>();
-    private ArrayList<Object_Candidate> senList = new ArrayList<>();
-
-    private ArrayList<Object_Candidate> dPresList = new ArrayList<>();
-    private ArrayList<Object_Candidate> dVpList = new ArrayList<>();
-    private ArrayList<Object_Candidate> dSenList = new ArrayList<>();
-
-    private ArrayList<Object_Voter> voter = new ArrayList<>();
-
     private Scanner scan;
-    private String firstName, lastName, initial = "", suffix = "", politicalParty, educationalBackground,
-            chosenPosition,
+    private ArrayList<Object_Candidate> candidates = new ArrayList<>();
+    private ArrayList<Object_Voter> voter = new ArrayList<>();
+    private String firstName, lastName, initial, suffix, politicalParty, educationalBackground, chosenPosition,
             crimeRecord, isQualified, votedPres, votedVp, votedSenate[] = new String[12];
-    private int input, age, dPres, dVp, dSen;
+    private int input, age, sizeCount[] = new int[6]; // [_valid pres_] [_valid vpres_] ...
 
     void Sort(ArrayList<Object_Candidate> list) {
         if (list.size() == 0)
@@ -31,6 +21,37 @@ public class Main2 {
                 return c1.getLastName().compareTo(c2.getLastName());
             }
         });
+    }
+
+    void IncrementPosSize(String pos, String qualification) {
+        if (pos.equalsIgnoreCase("President") && qualification.equalsIgnoreCase("Qualified"))
+            sizeCount[0]++;
+        if (pos.equalsIgnoreCase("Vice-President") && qualification.equalsIgnoreCase("Qualified"))
+            sizeCount[1]++;
+        if (pos.equalsIgnoreCase("Senator") && qualification.equalsIgnoreCase("Qualified"))
+            sizeCount[2]++;
+        if (pos.equalsIgnoreCase("President") && qualification.equalsIgnoreCase("Unqualified"))
+            sizeCount[3]++;
+        if (pos.equalsIgnoreCase("Vice-President") && qualification.equalsIgnoreCase("Unqualified"))
+            sizeCount[4]++;
+        if (pos.equalsIgnoreCase("Senator") && qualification.equalsIgnoreCase("Unqualified"))
+            sizeCount[5]++;
+    }
+
+    void DecrementPosSize(String pos, String qualification) {
+        if (pos.equalsIgnoreCase("President") && qualification.equalsIgnoreCase("Qualified") && sizeCount[0] != 0)
+            sizeCount[0]--;
+        if (pos.equalsIgnoreCase("Vice-President") && qualification.equalsIgnoreCase("Qualified") && sizeCount[1] != 0)
+            sizeCount[1]--;
+        if (pos.equalsIgnoreCase("Senator") && qualification.equalsIgnoreCase("Qualified") && sizeCount[2] != 0)
+            sizeCount[2]--;
+        if (pos.equalsIgnoreCase("President") && qualification.equalsIgnoreCase("Unqualified") && sizeCount[3] != 0)
+            sizeCount[3]--;
+        if (pos.equalsIgnoreCase("Vice-President") && qualification.equalsIgnoreCase("Unqualified")
+                && sizeCount[4] != 0)
+            sizeCount[4]--;
+        if (pos.equalsIgnoreCase("Senator") && qualification.equalsIgnoreCase("Unqualified") && sizeCount[5] != 0)
+            sizeCount[5]--;
     }
 
     void LoadData() throws Exception {
@@ -45,6 +66,8 @@ public class Main2 {
 
             scan.findInLine(": ");
             initial = scan.nextLine();
+            if (initial.equalsIgnoreCase("Initial:"))
+                initial = "";
 
             scan.findInLine(": ");
             suffix = scan.nextLine();
@@ -64,40 +87,22 @@ public class Main2 {
             crimeRecord = scan.nextLine();
             scan.nextLine();
 
-            if (criminalRecord.equalsIgnoreCase("None")) {
+            if (crimeRecord.equalsIgnoreCase("none"))
+                isQualified = "Qualified";
+            else
+                isQualified = "Unqualified";
 
-            }
-
+            IncrementPosSize(chosenPosition, isQualified);
             candidates.add(new Object_Candidate(lastName, firstName, initial, suffix, politicalParty,
-                    educationalBackground, chosenPosition, crimeRecord));
+                    educationalBackground, chosenPosition, crimeRecord, isQualified));
         }
         Sort(candidates);
-        LoadPresident();
         System.out.println("Note: The Data is now Loaded, Ready for Voting.");
+        scan.close();
     }
 
-    void LoadPresident() {
-        for (Object_Candidate data : candidates) {
-            lastName = data.getLastName();
-            firstName = data.getFirstName();
-            initial = data.getInitial();
-            suffix = data.getSuffix();
-            politicalParty = data.getPoliticalParty();
-            educationalBackground = data.getEducationalBackground();
-            chosenPosition = data.getChosenPosition();
-            crimeRecord = data.getCrimeRecord();
-
-            if (chosenPosition.equalsIgnoreCase("President") && crimeRecord.equalsIgnoreCase("None"))
-                presList.add(new Object_Candidate(lastName, firstName, initial, suffix, politicalParty,
-                        educationalBackground, chosenPosition, crimeRecord));
-            if (chosenPosition.equalsIgnoreCase("President") && !crimeRecord.equalsIgnoreCase("None"))
-                dPresList.add(new Object_Candidate(lastName, firstName, initial, suffix, politicalParty,
-                        educationalBackground, chosenPosition, crimeRecord));
-        }
-    }
-
-    void GetFullName(Object_Candidate data, String pos) {
-        if (data.getChosenPosition().equalsIgnoreCase(pos))
+    void QueryName(Object_Candidate data, String pos, String qualification) {
+        if (data.getChosenPosition().equalsIgnoreCase(pos) && data.getIsQualified().equalsIgnoreCase(qualification))
             System.out.println(data.getLastName() + ", " + data.getFirstName() + " " + data.getInitial() + " "
                     + data.getSuffix());
     }
@@ -109,52 +114,92 @@ public class Main2 {
         }
         System.out.println("\nAll Candidate for President");
         for (Object_Candidate data : candidates)
-            GetFullName(data, "President");
+            QueryName(data, "President", data.getIsQualified());
         System.out.println("\nAll Candidate for Vice-President");
         for (Object_Candidate data : candidates)
-            GetFullName(data, "Vice-President");
+            QueryName(data, "Vice-President", data.getIsQualified());
         System.out.println("\nAll Candidate for Senator");
         for (Object_Candidate data : candidates)
-            GetFullName(data, "Senator");
+            QueryName(data, "Senator", data.getIsQualified());
     }
 
-    void ValidPresidentCandidates() {
-        if (presList.size() == 0) {
+    void ValidPresCandidates() {
+        if (sizeCount[0] == 0) {
             System.out.println("Note: No Valid Candidate For President.");
             return;
         }
         System.out.println("\nAll Valid Candidate for President");
-        for (Object_Candidate data : presList)
-            GetFullName(data);
+        for (Object_Candidate data : candidates)
+            QueryName(data, "President", "Qualified");
     }
 
-    void InvalidPresidentCandidates() {
-        if (dPresList.size() == 0) {
+    void ValidVPresCandidates() {
+        if (sizeCount[1] == 0) {
+            System.out.println("Note: No Valid Candidate For Vice-President.");
+            return;
+        }
+        System.out.println("\nAll Valid Candidate for Vice-President");
+        for (Object_Candidate data : candidates)
+            QueryName(data, "Vice-President", "Qualified");
+    }
+
+    void ValidSenCandidates() {
+        if (sizeCount[2] == 0) {
+            System.out.println("Note: No Valid Candidate For Senator.");
+            return;
+        }
+        System.out.println("\nAll Valid Candidate for Senator");
+        for (Object_Candidate data : candidates)
+            QueryName(data, "Senator", "Qualified");
+    }
+
+    void InvalidPresCandidates() {
+        if (sizeCount[3] == 0) {
             System.out.println("Note: No Disqualified Candidate For President.");
             return;
         }
         System.out.println("\nAll Disqualified Candidate for President");
-        for (Object_Candidate data : dPresList)
-            GetFullName(data);
+        for (Object_Candidate data : candidates)
+            QueryName(data, "President", "Unqualified");
+    }
+
+    void InvalidVPresCandidates() {
+        if (sizeCount[4] == 0) {
+            System.out.println("Note: No Disqualified Candidate For Vice-President.");
+            return;
+        }
+        System.out.println("\nAll Disqualified Candidate for Vice-President");
+        for (Object_Candidate data : candidates)
+            QueryName(data, "Vice-President", "Unqualified");
+    }
+
+    void InvalidSenCandidates() {
+        if (sizeCount[5] == 0) {
+            System.out.println("Note: No Disqualified Candidate For Senator.");
+            return;
+        }
+        System.out.println("\nAll Disqualified Candidate for Senator");
+        for (Object_Candidate data : candidates)
+            QueryName(data, "Senator", "Unqualified");
     }
 
     void PrintAllValidCandidates() {
-        ValidPresidentCandidates();
-        // add ValidVPresidentCandidates
-        // add ValidSenatorCandidates
+        ValidPresCandidates();
+        ValidVPresCandidates();
+        ValidSenCandidates();
     }
 
     void PrintAllInvalidCandidates() {
-        InvalidPresidentCandidates();
-        // add InvalidVPresidentCandidates
-        // add InvalidSenatorCandidates
+        InvalidPresCandidates();
+        InvalidVPresCandidates();
+        InvalidSenCandidates();
     }
 
     void Main() throws Exception {
         scan = new Scanner(System.in);
 
         LoadData();
-        PrintAllCandidates();
+        PrintAllInvalidCandidates();
 
         scan.close();
     }

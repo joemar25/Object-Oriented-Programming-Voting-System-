@@ -4,7 +4,7 @@ public class Object_Candidate {
             crimeRecord, isQualified;
 
     public Object_Candidate(String lastName, String firstName, String initial, String suffix, String politicalParty,
-            String educationalBackground, String chosenPosition, String crimeRecord) {
+            String educationalBackground, String chosenPosition, String crimeRecord, String isQualified) {
         this.setFirstName(firstName);
         this.setLastName(lastName);
         this.setInitial(initial);
@@ -13,6 +13,7 @@ public class Object_Candidate {
         this.setEducationalBackground(educationalBackground);
         this.setChosenPosition(chosenPosition);
         this.setCrimeRecord(crimeRecord);
+        this.setIsQualified(isQualified);
     }
 
     public String getLastName() {
