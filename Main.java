@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.Scanner;
 import java.io.File;
 
-public class Main2 {
+public class Main {
 
     private Scanner scan;
     private ArrayList<Object_Candidate> candidates = new ArrayList<>();
