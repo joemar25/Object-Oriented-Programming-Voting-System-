@@ -13,13 +13,13 @@ Initial: D.
 Suffix:
 Political Party: Independent
 Educational Background: Masteral
-Running for: Vice President
+Running for: Vice-President
 Criminal Record: none
 
-Last Name: Mik
+Last Name: Jane
 First Name: Mik
-Initial: J.
-Suffix: Jane
+Initial: A.
+Suffix: Mik
 Political Party: Independent
 Educational Background: Doctorate
 Running for: President
@@ -31,7 +31,7 @@ Initial: J.
 Suffix: Jr.
 Political Party: Glory
 Educational Background: Doctorate
-Running for: President
+Running for: Vice-President
 Criminal Record: extortion
 
 Last Name: Speed

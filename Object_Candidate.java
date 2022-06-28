@@ -1,9 +1,9 @@
 public class Object_Candidate {
 
-    private String firstName, lastName, initial, suffix, politicalParty, educationalBackground, chosenPosition,
+    private String lastName, firstName, initial, suffix, politicalParty, educationalBackground, chosenPosition,
             crimeRecord;
 
-    public Object_Candidate(String firstName, String lastName, String initial, String suffix, String politicalParty,
+    public Object_Candidate(String lastName, String firstName, String initial, String suffix, String politicalParty,
             String educationalBackground, String chosenPosition, String crimeRecord) {
         this.setFirstName(firstName);
         this.setLastName(lastName);
@@ -15,20 +15,20 @@ public class Object_Candidate {
         this.setCrimeRecord(crimeRecord);
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    private void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
         return lastName;
     }
 
     private void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    private void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getInitial() {
