@@ -6,8 +6,7 @@ import java.io.File;
 
 public class Main2 {
 
-    private ArrayList<Object_Candidate> allCandidateList = new ArrayList<>();
-
+    private ArrayList<Object_Candidate> candidates = new ArrayList<>();
     private ArrayList<Object_Candidate> presList = new ArrayList<>();
     private ArrayList<Object_Candidate> vpList = new ArrayList<>();
     private ArrayList<Object_Candidate> senList = new ArrayList<>();
@@ -21,7 +20,7 @@ public class Main2 {
     private Scanner scan;
     private String firstName, lastName, initial = "", suffix = "", politicalParty, educationalBackground,
             chosenPosition,
-            crimeRecord, votedPres, votedVp, votedSenate[] = new String[12];
+            crimeRecord, isQualified, votedPres, votedVp, votedSenate[] = new String[12];
     private int input, age, dPres, dVp, dSen;
 
     void Sort(ArrayList<Object_Candidate> list) {
@@ -65,16 +64,20 @@ public class Main2 {
             crimeRecord = scan.nextLine();
             scan.nextLine();
 
-            allCandidateList.add(new Object_Candidate(lastName, firstName, initial, suffix, politicalParty,
+            if (criminalRecord.equalsIgnoreCase("None")) {
+
+            }
+
+            candidates.add(new Object_Candidate(lastName, firstName, initial, suffix, politicalParty,
                     educationalBackground, chosenPosition, crimeRecord));
         }
-        Sort(allCandidateList);
+        Sort(candidates);
         LoadPresident();
         System.out.println("Note: The Data is now Loaded, Ready for Voting.");
     }
 
     void LoadPresident() {
-        for (Object_Candidate data : allCandidateList) {
+        for (Object_Candidate data : candidates) {
             lastName = data.getLastName();
             firstName = data.getFirstName();
             initial = data.getInitial();
@@ -100,18 +103,18 @@ public class Main2 {
     }
 
     void PrintAllCandidates() {
-        if (allCandidateList.size() == 0) {
+        if (candidates.size() == 0) {
             System.out.println("Note: No Available Candidates. Please Load or fill a candidacy.");
             return;
         }
         System.out.println("\nAll Candidate for President");
-        for (Object_Candidate data : allCandidateList)
+        for (Object_Candidate data : candidates)
             GetFullName(data, "President");
         System.out.println("\nAll Candidate for Vice-President");
-        for (Object_Candidate data : allCandidateList)
+        for (Object_Candidate data : candidates)
             GetFullName(data, "Vice-President");
         System.out.println("\nAll Candidate for Senator");
-        for (Object_Candidate data : allCandidateList)
+        for (Object_Candidate data : candidates)
             GetFullName(data, "Senator");
     }
 

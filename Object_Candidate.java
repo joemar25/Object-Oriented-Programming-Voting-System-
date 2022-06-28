@@ -1,7 +1,7 @@
 public class Object_Candidate {
 
     private String lastName, firstName, initial, suffix, politicalParty, educationalBackground, chosenPosition,
-            crimeRecord;
+            crimeRecord, isQualified;
 
     public Object_Candidate(String lastName, String firstName, String initial, String suffix, String politicalParty,
             String educationalBackground, String chosenPosition, String crimeRecord) {
@@ -77,6 +77,14 @@ public class Object_Candidate {
 
     private void setCrimeRecord(String crimeRecord) {
         this.crimeRecord = crimeRecord;
+    }
+
+    public String getIsQualified() {
+        return isQualified;
+    }
+
+    public void setIsQualified(String isQualified) {
+        this.isQualified = isQualified;
     }
 
     @Override
