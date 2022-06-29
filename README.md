@@ -1,6 +1,6 @@
-# ⭐️ **CS111 Mid Term Project** ⭐️
+# ⭐️ **My Template** ⭐️
 
-This project is intended to give the proper calculations for time effiency of the Sorting Algorithms _(Insertion Sort, Merge Sort, Quick Sort, Heap Sort)_
+Follow Up Text
 
 <br>
 
@@ -10,11 +10,9 @@ This project is intended to give the proper calculations for time effiency of th
 
 ![Logo](https://static.vecteezy.com/system/resources/previews/000/371/208/original/vector-welcome-hand-drawn-text.jpg)
 
-## Members
+## Contributors
 
 - [Joemar Cardiño](https://github.com/joemar25 "Joemar's Github") 👋🏻
-- [Paolo Bono Cuenca](https://www.facebook.com/100004747590876/ "Paolo's Profile Page") ✌🏻
-- [Adrian Jones Abache](https://github.com/AdrianJones23 "Adrian's Github") 🤙🏻
 
 ## Tables of Contents
 

@@ -1,11 +1,11 @@
 public class Object_Voter {
 
-    private String firstName, lastName, initial, suffix, age, votedPres, votedVp, votedSenate[] = new String[12];
+    private String lastName, firstName, initial, suffix, age, votedPres, votedVp, votedSenate[] = new String[12];
 
-    public Object_Voter(String firstName, String lastName, String initial, String suffix, String age, String votedPres,
+    public Object_Voter(String lastName, String firstName, String initial, String suffix, String age, String votedPres,
             String votedVp, String[] votedSenate) {
-        this.setFirstName(firstName);
         this.setLastName(lastName);
+        this.setFirstName(firstName);
         this.setInitial(initial);
         this.setSuffix(suffix);
         this.setAge(age);
@@ -14,20 +14,20 @@ public class Object_Voter {
         this.setVotedSenate(votedSenate);
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    private void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
     public String getLastName() {
         return lastName;
     }
 
     private void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    private void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getInitial() {

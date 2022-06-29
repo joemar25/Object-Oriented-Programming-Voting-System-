@@ -11,7 +11,7 @@ public class Voting {
     private ArrayList<Object_Voter> voter = new ArrayList<>();
     private String firstName, lastName, initial, suffix, age, politicalParty, educationalBackground, chosenPosition,
             crimeRecord, isQualified, votedPres, votedVp, votedSenate[] = new String[12];
-    private int sizeCount[] = new int[6];
+    private int sizeCount[] = new int[6], counter;
 
     void Menu() {
         System.out.println("\nOOP Project 1 : Voting System\n");
@@ -219,12 +219,39 @@ public class Voting {
     }
 
     void Vote() {
+        System.out.print("Enter Age: ");
         age = in.nextLine();
 
-        voter.add(new Object_Voter(firstName, lastName, initial, suffix, age, votedPres, votedVp, votedSenate));
+        System.out.print("Last Name: ");
+        lastName = in.nextLine();
+
+        System.out.print("First Name: ");
+        firstName = in.nextLine();
+
+        System.out.print("Initial (skip if none): ");
+        initial = in.nextLine();
+
+        System.out.print("Suffix (skip if none): ");
+        suffix = in.nextLine();
+
+        System.out.print("President (enter 0 if none): ");
+        votedPres = in.nextLine();
+
+        System.out.print("Vice-President (enter 0 if none): ");
+        votedVp = in.nextLine();
+
+        counter = 1;
+        while (counter <= 12) {
+            // votedSenate;
+            System.out.println("->" + counter);
+            counter++;
+        }
+        // to-do: checker if voted senate exist
+        // to-do: checker if voted senate exist already on the list for voting
+        voter.add(new Object_Voter(lastName, firstName, initial, suffix, age, votedPres, votedVp, votedSenate));
     }
 
-    // end-all
+    // end
     void ClearAll() {
         if (candidates.size() == 0 && voter.size() == 0) {
             System.out.println("Note: Nothing To Clear. Try Again.");
@@ -238,7 +265,7 @@ public class Voting {
     void CloseAll() {
         candidates.clear();
         voter.clear();
-        scan.close();
+        in.close();
         System.out.println("\nThank you for using the program.");
     }
 
