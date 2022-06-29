@@ -15,9 +15,8 @@ public class Main {
             if (input.equals("1"))
                 v.PrintAllCandidates();
 
-            if (input.equals("2")) {
-
-            }
+            if (input.equals("2"))
+                v.Vote();
 
             if (input.equals("3")) {
                 System.out.println("\nCandidacy Form");

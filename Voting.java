@@ -9,9 +9,9 @@ public class Voting {
     private Scanner scan, in = new Scanner(System.in);
     private ArrayList<Object_Candidate> candidates = new ArrayList<>();
     private ArrayList<Object_Voter> voter = new ArrayList<>();
-    private String firstName, lastName, initial, suffix, politicalParty, educationalBackground, chosenPosition,
+    private String firstName, lastName, initial, suffix, age, politicalParty, educationalBackground, chosenPosition,
             crimeRecord, isQualified, votedPres, votedVp, votedSenate[] = new String[12];
-    private int age, sizeCount[] = new int[6]; // [_valid pres_] [_valid vpres_] ...
+    private int sizeCount[] = new int[6];
 
     void Menu() {
         System.out.println("\nOOP Project 1 : Voting System\n");
@@ -218,8 +218,10 @@ public class Voting {
         InvalidSenCandidates();
     }
 
-    void vote() {
+    void Vote() {
+        age = in.nextLine();
 
+        voter.add(new Object_Voter(firstName, lastName, initial, suffix, age, votedPres, votedVp, votedSenate));
     }
 
     void ClearAll() {
