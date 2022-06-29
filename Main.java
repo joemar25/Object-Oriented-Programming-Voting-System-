@@ -41,9 +41,7 @@ public class Main {
             if (input.equals("8"))
                 break;
         }
-        System.out.println("\nThank you for using the program.");
+        v.CloseAll();
         in.close();
-
     }
-
 }

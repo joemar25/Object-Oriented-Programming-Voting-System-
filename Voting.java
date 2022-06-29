@@ -6,12 +6,12 @@ import java.io.File;
 
 public class Voting {
 
-    private Scanner scan;
+    private Scanner scan, in = new Scanner(System.in);
     private ArrayList<Object_Candidate> candidates = new ArrayList<>();
     private ArrayList<Object_Voter> voter = new ArrayList<>();
     private String firstName, lastName, initial, suffix, politicalParty, educationalBackground, chosenPosition,
             crimeRecord, isQualified, votedPres, votedVp, votedSenate[] = new String[12];
-    private int input, age, sizeCount[] = new int[6]; // [_valid pres_] [_valid vpres_] ...
+    private int age, sizeCount[] = new int[6]; // [_valid pres_] [_valid vpres_] ...
 
     void Menu() {
         System.out.println("\nOOP Project 1 : Voting System\n");
@@ -120,6 +120,15 @@ public class Voting {
                     + data.getSuffix());
     }
 
+    void Option() {
+        System.out.print("1 - Show All Valid Candidates | 2 - Show All Disqualified Candidates | 3 - Menu\nOption: ");
+        String input = in.nextLine();
+        if (input.equals("1"))
+            PrintAllValidCandidates();
+        if (input.equals("2"))
+            PrintAllInvalidCandidates();
+    }
+
     void PrintAllCandidates() {
         if (candidates.size() == 0) {
             System.out.println("Note: No Available Candidates. Please Load or fill a candidacy.");
@@ -134,6 +143,7 @@ public class Voting {
         System.out.println("\nAll Candidate for Senator");
         for (Object_Candidate data : candidates)
             QueryName(data, "Senator", data.getIsQualified());
+        Option();
     }
 
     void ValidPresCandidates() {
@@ -208,6 +218,10 @@ public class Voting {
         InvalidSenCandidates();
     }
 
+    void vote() {
+
+    }
+
     void ClearAll() {
         if (candidates.size() == 0 && voter.size() == 0) {
             System.out.println("Note: Nothing To Clear. Try Again.");
@@ -216,6 +230,13 @@ public class Voting {
         candidates.clear();
         voter.clear();
         System.out.println("Note: All Data Is Now Clear.");
+    }
+
+    void CloseAll() {
+        candidates.clear();
+        voter.clear();
+        scan.close();
+        System.out.println("\nThank you for using the program.");
     }
 
 }
