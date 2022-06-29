@@ -224,7 +224,7 @@ public class Voting {
         voter.add(new Object_Voter(firstName, lastName, initial, suffix, age, votedPres, votedVp, votedSenate));
     }
 
-    // end
+    // end-all
     void ClearAll() {
         if (candidates.size() == 0 && voter.size() == 0) {
             System.out.println("Note: Nothing To Clear. Try Again.");
