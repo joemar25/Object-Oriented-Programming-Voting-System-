@@ -239,18 +239,23 @@ public class Voting {
         System.out.print("Suffix (skip if none): ");
         suffix = in.nextLine();
 
+        // display pres list
         System.out.print("President (enter 0 if none): ");
         votedPres = in.nextLine();
 
+        // display vp list
         System.out.print("Vice-President (enter 0 if none): ");
         votedVp = in.nextLine();
 
-        counter = 1;
-        while (counter <= 12) {
-            System.out.println("Senator Vote Remaning is " + counter);
-            System.out.println("Senator (enter 0 if none): ");
+        // display senator list
+        counter = 0;
+        while (counter < 12) {
+            System.out.println("Senator Vote Remaning is " + (counter + 1));
+            System.out.print("Senator (enter 0 if none): ");
             votedSenate = in.nextLine();
-
+            if (votedSenate.equalsIgnoreCase("0"))
+                break;
+            votedSenList[counter] = votedSenate;
             counter++;
         }
         // to-do: checker if voted senate exist..
