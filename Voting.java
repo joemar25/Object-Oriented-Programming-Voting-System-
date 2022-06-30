@@ -246,8 +246,8 @@ public class Voting {
             System.out.println("->" + counter);
             counter++;
         }
-        // to-do: checker if voted senate exist
-        // to-do: checker if voted senate exist already on the list for voting
+        // to-do: checker if voted senate exist..
+        // to-do: checker if voted senate exist already on the list for voting..
         voter.add(new Object_Voter(lastName, firstName, initial, suffix, age, votedPres, votedVp, votedSenate));
     }
 
