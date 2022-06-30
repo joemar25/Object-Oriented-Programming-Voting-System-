@@ -242,8 +242,8 @@ public class Voting {
 
         counter = 1;
         while (counter <= 12) {
-            // votedSenate;
-            System.out.println("->" + counter);
+            System.out.println("Vote Remaning is " + counter);
+            System.out.println("Senator (enter 0 if none): ");
             counter++;
         }
         // to-do: checker if voted senate exist..
