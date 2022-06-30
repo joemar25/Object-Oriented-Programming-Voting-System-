@@ -222,6 +222,9 @@ public class Voting {
         System.out.print("Enter Age: ");
         age = in.nextLine();
 
+        if (age.isEmpty() || age.contains("a-zA-Z"))
+            return;
+
         System.out.print("Last Name: ");
         lastName = in.nextLine();
 

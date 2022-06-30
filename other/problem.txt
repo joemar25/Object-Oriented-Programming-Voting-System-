@@ -33,3 +33,7 @@ Minimum number of voters will be 25.
 
 After voting, display the final tally of votes.
 Display the respective winners on each position.
+
+my NOTE:
+
+[a-zA-Z]+ for checking if character contains a to z and A to Z characters
