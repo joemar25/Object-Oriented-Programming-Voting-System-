@@ -219,6 +219,14 @@ public class Voting {
     }
 
     void Vote() {
+
+        if (sizeCount[0] <= 2 || sizeCount[1] <= 3 || sizeCount[2] <= 14) {
+            System.out.println("Check IF : Candidate for President is at least 2.");
+            System.out.println("Check IF : Candidate for Vice-President is at least than 3.");
+            System.out.println("Check IF : Candidate for Senator is at least than 14.");
+            return;
+        }
+
         System.out.print("Enter Age: ");
         age = in.nextLine();
 
@@ -239,28 +247,36 @@ public class Voting {
         System.out.print("Suffix (skip if none): ");
         suffix = in.nextLine();
 
-        // display pres list
+        ValidPresCandidates();
         System.out.print("President (enter 0 if none): ");
         votedPres = in.nextLine();
 
-        // display vp list
+        ValidVPresCandidates();
         System.out.print("Vice-President (enter 0 if none): ");
         votedVp = in.nextLine();
 
-        // display senator list
+        ValidSenCandidates();
         counter = 0;
         while (counter < 12) {
+
             System.out.println("Senator Vote Remaning is " + (counter + 1));
             System.out.print("Senator (enter 0 if none): ");
             votedSenate = in.nextLine();
+
             if (votedSenate.equalsIgnoreCase("0"))
                 break;
+
             votedSenList[counter] = votedSenate;
             counter++;
+
         }
         // to-do: checker if voted senate exist..
         // to-do: checker if voted senate exist already on the list for voting..
         voter.add(new Object_Voter(lastName, firstName, initial, suffix, age, votedPres, votedVp, votedSenList));
+    }
+
+    void isSenateVoteDuplicated() {
+
     }
 
     // end
