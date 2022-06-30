@@ -10,7 +10,7 @@ public class Voting {
     private ArrayList<Object_Candidate> candidates = new ArrayList<>();
     private ArrayList<Object_Voter> voter = new ArrayList<>();
     private String firstName, lastName, initial, suffix, age, politicalParty, educationalBackground, chosenPosition,
-            crimeRecord, isQualified, votedPres, votedVp, votedSenate[] = new String[12];
+            crimeRecord, isQualified, votedPres, votedVp, votedSenate, votedSenList[] = new String[12];
     private int sizeCount[] = new int[6], counter;
 
     void Menu() {
@@ -222,7 +222,9 @@ public class Voting {
         System.out.print("Enter Age: ");
         age = in.nextLine();
 
-        if (age.isEmpty() || age.contains("a-zA-Z"))
+        if (!age.matches("[0-9]+"))
+            return;
+        if (Integer.parseInt(age) < 18 || Integer.parseInt(age) > 100)
             return;
 
         System.out.print("Last Name: ");
@@ -245,13 +247,15 @@ public class Voting {
 
         counter = 1;
         while (counter <= 12) {
-            System.out.println("Vote Remaning is " + counter);
+            System.out.println("Senator Vote Remaning is " + counter);
             System.out.println("Senator (enter 0 if none): ");
+            votedSenate = in.nextLine();
+
             counter++;
         }
         // to-do: checker if voted senate exist..
         // to-do: checker if voted senate exist already on the list for voting..
-        voter.add(new Object_Voter(lastName, firstName, initial, suffix, age, votedPres, votedVp, votedSenate));
+        voter.add(new Object_Voter(lastName, firstName, initial, suffix, age, votedPres, votedVp, votedSenList));
     }
 
     // end
