@@ -220,10 +220,10 @@ public class Voting {
 
     void Vote() {
 
-        if (sizeCount[0] <= 2 || sizeCount[1] <= 3 || sizeCount[2] <= 14) {
+        if (sizeCount[0] < 2 || sizeCount[1] < 3 || sizeCount[2] < 14) {
             System.out.println("Check IF : Candidate for President is at least 2.");
-            System.out.println("Check IF : Candidate for Vice-President is at least than 3.");
-            System.out.println("Check IF : Candidate for Senator is at least than 14.");
+            System.out.println("Check IF : Candidate for Vice-President is at least 3.");
+            System.out.println("Check IF : Candidate for Senator is at least 14.");
             return;
         }
 
@@ -259,7 +259,7 @@ public class Voting {
         counter = 0;
         while (counter < 12) {
 
-            System.out.println("Senator Vote Remaning is " + (counter + 1));
+            System.out.println("Senator Vote Remaning is " + (12 - counter));
             System.out.print("Senator (enter 0 if none): ");
             votedSenate = in.nextLine();
 
