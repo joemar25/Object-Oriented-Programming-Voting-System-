@@ -277,8 +277,14 @@ public class Voting {
         voter.add(new Object_Voter(lastName, firstName, initial, suffix, age, votedPres, votedVp, votedSenList));
     }
 
-    void isSenateVoteDuplicated(String values) {
-        
+    void isSenateVoteDuplicated(String senList[], String values[]) {
+
+        for (Object_Candidate data : candidates) {
+            if (data.getChosenPosition().equalsIgnoreCase("Senator")
+                    && data.getIsQualified().equalsIgnoreCase("Qualified")) {
+
+            }
+        }
     }
 
     // end
