@@ -266,8 +266,10 @@ public class Voting {
             if (votedSenate.equalsIgnoreCase("0"))
                 break;
 
-            votedSenList[counter] = votedSenate;
-            counter++;
+            if (true) {
+                votedSenList[counter] = votedSenate;
+                counter++;
+            }
 
         }
         // to-do: checker if voted senate exist..
@@ -275,8 +277,8 @@ public class Voting {
         voter.add(new Object_Voter(lastName, firstName, initial, suffix, age, votedPres, votedVp, votedSenList));
     }
 
-    void isSenateVoteDuplicated() {
-
+    void isSenateVoteDuplicated(String values) {
+        
     }
 
     // end
