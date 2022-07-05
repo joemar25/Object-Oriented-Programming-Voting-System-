@@ -270,8 +270,6 @@ public class Voting {
                 votedSenList[counter] = votedSenate;
                 counter++;
             }
-
-        }
         // to-do: checker if voted senate exist..
         // to-do: checker if voted senate exist already on the list for voting..
         //
