@@ -274,6 +274,7 @@ public class Voting {
         }
         // to-do: checker if voted senate exist..
         // to-do: checker if voted senate exist already on the list for voting..
+        //
         voter.add(new Object_Voter(lastName, firstName, initial, suffix, age, votedPres, votedVp, votedSenList));
     }
 
